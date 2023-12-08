@@ -4,12 +4,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import udemy.example.rabbitmq.producer.producer.RabbitProducerService;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 @SpringBootApplication
 @RequiredArgsConstructor
+@EnableScheduling
 public class ProducerApplication implements CommandLineRunner {
 
     private final RabbitProducerService rabbitProducerService;
