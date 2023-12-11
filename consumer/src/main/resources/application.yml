@@ -3,3 +3,9 @@ spring:
     addresses: "localhost:5672"
     username: guest
     password: guest
+
+self:
+  rabbitmq:
+    queue:
+      basic: course.hello
+      fixed-rate: course.fixedrate

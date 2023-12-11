@@ -18,13 +18,14 @@ public class FixedRateRabbitProducerService {
     private String queueName;
 
     private final RabbitTemplate rabbitTemplate;
-    private int i = 0;
+    private volatile int i = 0;
 
-    @Scheduled(fixedRate = 2000)
-    public void sendMessage() {
+    @Scheduled(fixedRate = 500)
+    public synchronized void sendMessage() {
         // System.out.println(STR."This is message number \{++i}}");
-        log.info(STR."Message number \{++i} has been sent.");
+        // log.info(STR."Message number \{++i} has been sent.");
         // log.info(queueName);
+        ++i;
         rabbitTemplate.convertAndSend(queueName, STR."Fixed rate: \{i}");
     }
 }
